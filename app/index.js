@@ -8,11 +8,9 @@ import { today } from "user-activity";
 import { Barometer } from "barometer";
 import { display } from "display";
 import { peerSocket } from "messaging";
+import { gettext } from "i18n";
 // Update the clock every minute
 clock.granularity = "seconds";
-peerSocket.onmessage = evt => {
-  console.log("OK")
-};
 // Get a handle on the <text> element
 const clockLabel = document.getElementById("clock");
 const stepsLabel = document.getElementById("steps");
@@ -83,7 +81,6 @@ peerSocket.onmessage = evt => {
   const dParse = JSON.parse(data);
   tempLabel.text = dParse.temp + " °C";
   locLabel.text = dParse.loc;
-  condLabel.text = wConds[dParse.cond];
-  console.log(wConds[dParse.cond]);
+  condLabel.text = gettext(dParse.cond);
   
 };

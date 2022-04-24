@@ -22,9 +22,6 @@ if (companion.permissions.granted("access_location")) {
          const cond = data.locations[0].currentWeather.weatherCondition;
          const loc = data.locations[0].name;
          const unit = data.temperatureUnit;
-         console.log(`It's ${temp}\u00B0 ${unit} and ${cond} in ${loc}`);
-         
-         console.log("Max message size=" + peerSocket.MAX_MESSAGE_SIZE);
          if(temp != tempPrev || ign == true)
           if (peerSocket.readyState === peerSocket.OPEN) {
               peerSocket.send('{"temp":'+'"'+temp+'"'+',"loc":'+'"'+loc+'","cond":'+'"'+cond+'"'+"}");
