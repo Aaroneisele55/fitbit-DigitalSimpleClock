@@ -66,5 +66,14 @@
   y: 95%;
   fill: yellow;
 }
+#batt {
+  font-size: 30;
+  font-family: System-Bold;
+  text-length: 100;
+  x: 10%;
+  y: 95%;
+  fill: magenta;
+}
+
 
 

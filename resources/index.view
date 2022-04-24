@@ -6,4 +6,5 @@
   <text id="temp" />
   <text id="loc" />
   <text id="cond" />
+  <text id="batt" />
 </svg>

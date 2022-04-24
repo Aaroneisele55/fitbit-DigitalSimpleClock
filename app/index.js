@@ -9,6 +9,8 @@ import { Barometer } from "barometer";
 import { display } from "display";
 import { peerSocket } from "messaging";
 import { gettext } from "i18n";
+import { battery } from "power";
+import { charger } from "power";
 // Update the clock every minute
 clock.granularity = "seconds";
 // Get a handle on the <text> element
@@ -19,6 +21,7 @@ const heightLabel = document.getElementById("height");
 const tempLabel = document.getElementById("temp");
 const locLabel = document.getElementById("loc");
 const condLabel = document.getElementById("cond");
+const battLabel = document.getElementById("batt");
 let simple = false;
 
 // Update the <text> element every tick with the current time
@@ -110,3 +113,7 @@ clockLabel.addEventListener("click", (evt) => {
           }
     }
 });
+battery.addEventListener("change", () => {
+  battLabel.text = Math.floor(battery.chargeLevel) + "%"+(charger.connected ? "C" : "");
+});
+
