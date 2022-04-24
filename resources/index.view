@@ -1,0 +1,9 @@
+<svg class="background">
+  <text id="clock" />
+  <text id="hr" />
+  <text id="steps" />
+  <text id="height" />
+  <text id="temp" />
+  <text id="loc" />
+  <text id="cond" />
+</svg>

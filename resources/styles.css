@@ -1,0 +1,70 @@
+.background {
+  viewport-fill: black;
+}
+
+#clock {
+  font-size: 80;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 25%+40;
+  fill: white;
+}
+#hr {
+  font-size: 55;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 15%;
+  fill: red;
+}
+
+#steps {
+  font-size: 50;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 50%;
+  fill: green;
+}
+#height {
+  font-size: 50;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 65%;
+  fill: blue;
+}
+#temp {
+  font-size: 50;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 85%;
+  fill: yellow;
+}
+#loc {
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 90%;
+  fill: yellow;
+}
+#cond {
+  font-size: 20;
+  font-family: System-Bold;
+  text-length: 100;
+  text-anchor: middle;
+  x: 50%;
+  y: 95%;
+  fill: yellow;
+}
+
+
