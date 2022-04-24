@@ -75,11 +75,11 @@
   fill: magenta;
 }
 #batt2 {
-  font-size: 40;
+  font-size: 60;
   font-family: System-Bold;
   text-length: 100;
-  x: 165;
-  y: 265;
+  x: 135;
+  y: 255;
   fill: magenta;
 }
 #date {
