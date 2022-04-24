@@ -1,5 +1,5 @@
 <svg class="background">
-  <text id="clock" />
+  <text id="clock" pointer-events="visible"/>
   <text id="hr" />
   <text id="steps" />
   <text id="height" />

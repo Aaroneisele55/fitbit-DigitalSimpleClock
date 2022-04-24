@@ -1,6 +1,7 @@
 import { me as companion } from "companion";
 import weather from "weather";
 import { peerSocket } from "messaging";
+const MILLISECONDS_PER_MINUTE = 1000 * 60;
 
 peerSocket.onopen = function() {
   getWeather(true);
@@ -8,6 +9,12 @@ peerSocket.onopen = function() {
 peerSocket.onmessage = evt => {
   getWeather(false);
 };
+companion.wakeInterval = 5 * MILLISECONDS_PER_MINUTE;
+companion.addEventListener("wakeinterval", getWeather(true));
+// Event happens if the companion is launched and has been asleep
+if (companion.launchReasons.wokenUp) {
+  getWeather(true);
+}
 function getWeather(ign)
 {
 if (companion.permissions.granted("access_location")) {
@@ -27,6 +34,6 @@ if (companion.permissions.granted("access_location")) {
               peerSocket.send('{"temp":'+'"'+temp+'"'+',"loc":'+'"'+loc+'","cond":'+'"'+cond+'"'+"}");
            }
          }
+
        });
-}
-}
+}}

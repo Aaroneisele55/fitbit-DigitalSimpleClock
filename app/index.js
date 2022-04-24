@@ -19,6 +19,7 @@ const heightLabel = document.getElementById("height");
 const tempLabel = document.getElementById("temp");
 const locLabel = document.getElementById("loc");
 const condLabel = document.getElementById("cond");
+let simple = false;
 
 // Update the <text> element every tick with the current time
 clock.ontick = (evt) => {
@@ -40,8 +41,8 @@ clock.ontick = (evt) => {
   if(mins != minsPrev)
     {
       if (peerSocket.readyState === peerSocket.OPEN) {
-              peerSocket.send("UPD")
-          }
+       peerSocket.send("UPD");
+      }
     }
 }
 
@@ -54,7 +55,7 @@ const hrm = new HeartRateSensor();
 
 //Steps init and mapping <--->
 if (appbit.permissions.granted("access_activity")) {
-   stepsLabel.text = today.adjusted.steps+" Schritte"
+   stepsLabel.text = today.adjusted.steps+" "+gettext("steps");
 }
 
 
@@ -62,7 +63,10 @@ const wConds = ["klar","wolkig","kalt","Flurries","Nebel","SchneeRegen","Nebel(N
 //Barometer init and reading <--->
 const barometer = new Barometer({ frequency: 1 });
 barometer.addEventListener("reading", () => {
+  if(simple==false)
+    {
    heightLabel.text = Math.round(util.altitudeFromPressure(barometer.pressure / 100)/3.281)-61 + " m";
+    }
 });
 hrm.start();
 barometer.start();
@@ -71,6 +75,9 @@ display.addEventListener("change", () => {
    if (display.on) {
      hrm.start();
      barometer.start();
+     if (peerSocket.readyState === peerSocket.OPEN) {
+        peerSocket.send("UPD");
+     }
    } else {
       hrm.stop();
      barometer.stop();
@@ -79,8 +86,27 @@ display.addEventListener("change", () => {
 peerSocket.onmessage = evt => {
   let data = evt.data;
   const dParse = JSON.parse(data);
-  tempLabel.text = dParse.temp + " °C";
-  locLabel.text = dParse.loc;
-  condLabel.text = gettext(dParse.cond);
-  
+  if(!simple)
+    {
+      tempLabel.text = dParse.temp + " °C";
+      locLabel.text = dParse.loc;
+      condLabel.text = gettext(dParse.cond);
+    }
 };
+clockLabel.addEventListener("click", (evt) => {
+  console.log("click");
+  simple = !simple;
+  if(simple)
+    {  
+      tempLabel.text = "";
+      locLabel.text = "";
+      condLabel.text = "";
+      heightLabel.text = "";
+    }
+  else
+    {
+      if (peerSocket.readyState == peerSocket.OPEN) {
+              peerSocket.send("UPD")
+          }
+    }
+});
