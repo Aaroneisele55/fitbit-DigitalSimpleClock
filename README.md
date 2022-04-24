@@ -9,4 +9,5 @@ Then, this is your watchface
 3. The altitude (Barometric, not very precise, but it's there :D
 4. Multiple Things about the Weather (Location, Condition, Temperature)
 5. Your Steps Count
-The 4th feature depends on the Companion App, the Smartphone must be nearby, if not it will just stay black.
+
+INFO: The 4th feature depends on the Companion App, the Smartphone must be nearby, if not it will just stay black.
