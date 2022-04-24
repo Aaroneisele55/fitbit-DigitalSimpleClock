@@ -7,7 +7,7 @@ peerSocket.onopen = function() {
   getWeather(true);
 }
 peerSocket.onmessage = evt => {
-  getWeather(false);
+  getWeather(true);
 };
 companion.wakeInterval = 5 * MILLISECONDS_PER_MINUTE;
 companion.addEventListener("wakeinterval", getWeather(true));

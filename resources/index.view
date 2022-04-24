@@ -7,4 +7,6 @@
   <text id="loc" />
   <text id="cond" />
   <text id="batt" />
+  <text id="batt2" />
+  <text id="date" />
 </svg>
