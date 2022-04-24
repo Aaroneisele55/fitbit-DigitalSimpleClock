@@ -114,6 +114,6 @@ clockLabel.addEventListener("click", (evt) => {
     }
 });
 battery.addEventListener("change", () => {
-  battLabel.text = Math.floor(battery.chargeLevel) + "%"+(charger.connected ? "C" : "");
+  battLabel.text = Math.floor(battery.chargeLevel) + "%"+(charger.connected ? "+" : "");
 });
 
